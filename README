@@ -1,0 +1,25 @@
+SCRIPT: MoveDirectoryScript.ps1
+===========================================
+AUTHOR: 	Jordana Approvato
+DESCRIPTION:	Parses a CSV of file paths and moves each dir and its children to a "To Be Deleted" directory and logs the results in log.csv
+REQUIREMENTS:	PowerShell v1.0 or higher, need to edit paths.txt to list the files you wish to move. Optionally, you can change the folder they are moved to by changing the $newPath variable on line 20 (Default "C:/To Be Deleted")
+===========================================
+STEPS:
+===========================================
+BEFORE RUNNING
+1. 	Open "paths.txt" or create a new file called "paths.txt" if one does not already exist. Make sure that the first line of the text file is "Paths". 
+	Fill in each line after that with a path that you want to perform the selected action on. You can include as many paths as you want, but they should ideally be the absolute path (full path).
+2.  If you wish to send the folders/files to a directory other than the default ("C:/To Be Deleted"), you can change the $newPath variable on line 20 of MoveDirectoryScript.ps1 to the desired path.
+3.	If you wish to start with a clean log file, delete the log.csv file (a new one will be created while the script is running)
+===========================================
+WHILE RUNNING
+1.  Run the PowerShell Script by right clicking the file (MoveDirectoryScript.ps1) and choose 'Run with PowerShell' from the menu, or run the program via the command line if you prefer.
+2. 	You will be prompted to select one of the following options:
+		[1] Move Entire Folder Structure
+		[2] Copy Folder Structure
+		[3] Move Files Only, Keep Folder Structure
+		[4] Cancel
+	Depending on which one you choose, that action will be run on each of the paths provided and all of their subfolders and files.
+===========================================
+LOG FILE FORMAT - log.csv
+TimeStamp, Original Path, Number of Files in Original Path, Number of Folders in Original Path, Option Chosen, Destination Path, Number of Files in Destination Path, Number of Folders in Destination Path
